@@ -17,7 +17,7 @@ ESP32-WROOM
 # methods available
 
 Method | Description
-_____________________
+------ | -----------
     void begin() | Initialize the spi sensor.
     <b>void setStartPosition()</b>  -> define a offset for readValue / read angle / totalAngle. Set a home  position to the device (value 0)
     <b>int32_t readValue()</b> -> read scale from 0 to 1023 (10 bits)
