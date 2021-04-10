@@ -14,24 +14,23 @@ ESP32-WROOM
 2. Create a AS5050A object: AS5050A encoder(SS,MOSI,MISO,SCK,1000000); ;  -> Define here the SPI chip pinout and the SPI SPEED. The sensor SPI support rates up to 10MHz.
 3. Use method begin() to initialize the device.
 
-# methods available
+# Methods available
 
 Method | Description
 ------ | -----------
-    void begin() | Initialize the spi sensor.
-    <b>void setStartPosition()</b>  -> define a offset for readValue / read angle / totalAngle. Set a home  position to the device (value 0)
-    <b>int32_t readValue()</b> -> read scale from 0 to 1023 (10 bits)
-    <b>int16_t getAngle()</b>  -> convert value read from 0° up to 360° 
-    <b>int8_t getRotations()</b> get rotation number (negative and positive to inform the direction)
-    <b>int32_t getAbsoluteAngle()</b> -> get absolute angle based on rotations (negative and positive to indicate the direction);
-    <b>void setAlarmPoint(int32_t absoluteAngle)</b> -> define a alarm point to be triggered by absoluteAngle. To this works, should read the value and absolute angle with some often (1ms? / 10ms?)
+**void begin()** | Initialize the spi sensor.
+**void setStartPosition()** | define a offset for readValue / read angle / totalAngle. Set a home  position to the device (value 0)
+**int32_t readValue()** | read scale from 0 to 1023 (10 bits)
+**int16_t getAngle()** | convert value read from 0° up to 360° 
+**int8_t getRotations()** | get rotation number (negative and positive to inform the direction)
+**int32_t getAbsoluteAngle()** | get absolute angle based on rotations (negative and positive to indicate the direction);
+**void setAlarmPoint(int32_t absoluteAngle)** | define a alarm point to be triggered by absoluteAngle. To this works, should read the value and absolute angle with some often (1ms? / 10ms?)
+**void alarmEvent(alarmCallback alarm_callback)** | Alarm callback event. Based on the alarm points set, it will trigger an alarm when between +-5 value set.
 	
-    <b>void alarmEvent(alarmCallback alarm_callback)<b> -> Alarm callback event. Based on the alarm points set, it will trigger an alarm when between +-5 value set.
-	
-	*** To define max alarm points, please change the define on .h file ->  #define MAX_ALARM_POINT . Default is 10.
-	*** To change the interval alarm value, please change the define on .h file -> #define ROUND_POINT_ERROR . Default is 5.
+* To define max alarm points, please change the define on .h file ->  **#define MAX_ALARM_POINT** . Default is 10.
+* To change the interval alarm value, please change the define on .h file -> **#define ROUND_POINT_ERROR** . Default is 5.
 
-# Simple example
+# Example
 
 ```
 
